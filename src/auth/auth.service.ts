@@ -9,5 +9,16 @@ import { PassportStrategy } from '@nestjs/passport';
 export class AuthService {
     constructor(private readonly jwtService: JwtService) {}
 
+    async validateUser(username: string, password: string): Promise<any> {
+        // Implement your user validation logic here
+        return { userId: 1, username: 'test' }; // Example user object
+    }
+    async login() {
+        const payload = { username: 'test' };
+        return {
+            access_token: this.jwtService.sign(payload),
+        };
+    }
+
  
 }
